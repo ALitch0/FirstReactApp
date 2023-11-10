@@ -15,14 +15,10 @@ function Contact(){
 
     const handleChange = (event) =>{
         setMessage(event.target.value)
+        if (message != ""){
+        setErrorMessage(null);
+        }
         
-        //if input has a value, remove any error message displayed
-        if(message === ""){
-            setErrorMessage('Message is required');
-        }
-        else{
-            setErrorMessage(null);
-        }
     }
     const showMessageAlert = () => {
         if(message === ""){
@@ -40,7 +36,7 @@ function Contact(){
                 <li><a href="www.twitter.com">Twitter</a></li>
                 <li><a href="www.facebook.com">Facebook</a></li>
                 </ul>
-                <textarea placeholder="Send us a message" onKeyUp={handleChange}></textarea>
+                <textarea placeholder="Send us a message" onChange={handleChange}></textarea>
                 <div id="errorMessage" className="text-danger">{errorMessage}</div>
                 <button className="btn btn-info" onClick={showMessageAlert}>Submit</button>
                 <p>Your message is: {message}</p>
